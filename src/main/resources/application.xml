@@ -3,11 +3,16 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="driver" class="java.lang.String">
+    <bean class="java.lang.String" id="driver">
         <constructor-arg type="java.lang.String" value="postgresDrivew"/>
     </bean>
 
-    <bean id="pool1" name="p1, p2, p3" class="org.example.database.ConnectionPool">
+    <bean class="org.example.database.ConnectionPool"
+          id="pool1"
+          name="p1, p2, p3"
+          init-method="init"
+          destroy-method="destroy">
+
         <constructor-arg ref="driver"/>
         <constructor-arg value="10"/>
         <constructor-arg>
@@ -22,9 +27,17 @@
                 <entry key="password" value="1234"/>
             </map>
         </constructor-arg>
+
+        <property name="properties">
+            <map>
+                <entry key="url" value-ref="driver"/>
+                <entry key="password" value="1234"/>
+            </map>
+        </property>
     </bean>
 
-    <bean id="companyRepository" class="org.example.repository.CompanyRepository" factory-method="companyRepositoryFactoryMethod">
+    <bean class="org.example.repository.CompanyRepository" id="companyRepository"
+          factory-method="companyRepositoryFactoryMethod">
         <constructor-arg ref="p1"/>
     </bean>
 

@@ -19,4 +19,16 @@ public class ConnectionPool {
         this.args = args;
         this.properties = properties;
     }
+
+    public void setProperties(Map<String,Object> properties) {
+        this.properties.putAll(properties);
+    }
+
+    private void init() {
+        System.out.println("Initializing connection pool...");
+    }
+
+    private void destroy() {
+        System.out.println("Destroying connection pool...");
+    }
 }
