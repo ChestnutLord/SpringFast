@@ -25,7 +25,7 @@
         <constructor-arg type="java.lang.String" value="${db.diver}"/>
     </bean>
 
-    <bean class="org.example.database.ConnectionPool"
+    <bean class="org.example.database.pool.ConnectionPool"
           id="pool1"
           name="p1, p2, p3">
 
@@ -52,6 +52,6 @@
         </property>
     </bean>
 
-    <bean class="org.example.repository.CompanyRepository" id="companyRepository"/>
+    <bean class="org.example.database.repository.CompanyRepository" id="companyRepository"/>
 
 </beans>

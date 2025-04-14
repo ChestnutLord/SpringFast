@@ -1,7 +1,7 @@
 package org.example;
 
-import org.example.database.ConnectionPool;
-import org.example.repository.CompanyRepository;
+import org.example.database.pool.ConnectionPool;
+import org.example.database.repository.CompanyRepository;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
