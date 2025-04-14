@@ -1,5 +1,8 @@
 package org.example.database;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
 import java.util.List;
 import java.util.Map;
 
@@ -24,10 +27,12 @@ public class ConnectionPool {
         this.properties.putAll(properties);
     }
 
+    @PostConstruct
     private void init() {
         System.out.println("Initializing connection pool...");
     }
 
+    @PreDestroy
     private void destroy() {
         System.out.println("Destroying connection pool...");
     }

@@ -10,10 +10,8 @@ repositories {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/org.springframework/spring-core
     implementation("org.springframework:spring-core:7.0.0-M3")
-
-    // https://mvnrepository.com/artifact/org.springframework/spring-context
+    implementation("jakarta.annotation:jakarta.annotation-api:3.0.0")
     implementation("org.springframework:spring-context:7.0.0-M3")
 
     testImplementation platform('org.junit:junit-bom:5.10.0')
