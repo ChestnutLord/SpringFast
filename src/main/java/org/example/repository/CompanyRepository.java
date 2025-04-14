@@ -1,11 +1,10 @@
 package org.example.repository;
 
-import org.example.bpp.MyAnnotation;
+import org.example.bpp.MyAnnotationInjectBean;
+import org.example.database.ConnectionPool;
 
 public class CompanyRepository {
 
-    @MyAnnotation
-    public CompanyRepository() {
-        ;
-    }
+    @MyAnnotationInjectBean
+    private ConnectionPool connectionPool;
 }
