@@ -27,9 +27,13 @@
         <constructor-arg type="java.lang.String" value="${db.diver}"/>
     </bean>
 
+    <bean class="org.example.database.pool.ConnectionPool" id="pool2">
+    </bean>
+
     <bean class="org.example.database.pool.ConnectionPool"
           id="pool1"
           name="p1, p2, p3">
+
 
         <constructor-arg value="${db.username}"/>
         <constructor-arg value="${db.pool.size}"/>
