@@ -13,6 +13,8 @@
     <context:annotation-config/>
 
     <bean class="org.example.bpp.InjectBeanPostProcessor"/>
+    <bean class="org.example.bpp.TransactionBeanPostProcessor"/>
+    <bean class="org.example.bpp.AuditingBeanPostProcessor"/>
 
     <bean class="org.example.bfpp.LogBeanFactoryPostProcessor"/>
     <bean class="org.example.bfpp.VerifyPropertyBeanFactoryPostProcessor"/>

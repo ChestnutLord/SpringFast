@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.database.pool.ConnectionPool;
 import org.example.database.repository.CompanyRepository;
+import org.example.database.repository.CrudRepository;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
@@ -9,8 +10,8 @@ public class Main {
         try (var context = new ClassPathXmlApplicationContext("application.xml")) {
 
             var connectionPool = context.getBean("pool1", ConnectionPool.class);
-            var companyRep = context.getBean("companyRepository", CompanyRepository.class);
-            System.out.println(companyRep);
+            var companyRepository = context.getBean("companyRepository", CrudRepository.class);
+            System.out.println(companyRepository.findById(1));
 
         }
     }
