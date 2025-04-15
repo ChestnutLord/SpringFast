@@ -10,54 +10,39 @@
 
     <!--   <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>-->
 
+    <context:property-placeholder location="classpath:Application.properties"/>
     <context:annotation-config/>
-
-    <bean class="org.example.bpp.InjectBeanPostProcessor"/>
-    <bean class="org.example.bpp.TransactionBeanPostProcessor"/>
-    <bean class="org.example.bpp.AuditingBeanPostProcessor"/>
-
-    <bean class="org.example.bfpp.LogBeanFactoryPostProcessor"/>
-    <bean class="org.example.bfpp.VerifyPropertyBeanFactoryPostProcessor"/>
-
-    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
-        <property name="locations" value="Application.properties"/>
-    </bean>
+    <context:component-scan base-package="org.example"/>
 
     <bean class="java.lang.String" id="driver">
         <constructor-arg type="java.lang.String" value="${db.diver}"/>
     </bean>
 
-    <bean class="org.example.database.pool.ConnectionPool" id="pool2">
-    </bean>
-
-    <bean class="org.example.database.pool.ConnectionPool"
-          id="pool1"
-          name="p1, p2, p3">
-
-
-        <constructor-arg value="${db.username}"/>
-        <constructor-arg value="${db.pool.size}"/>
-        <constructor-arg>
-            <list>
-                <value>--arg1=value1</value>
-                <ref bean="driver"/>
-            </list>
-        </constructor-arg>
-        <constructor-arg>
-            <map>
-                <entry key="url" value-ref="driver"/>
-                <entry key="password" value="1234"/>
-            </map>
-        </constructor-arg>
-
-        <property name="properties">
-            <map>
-                <entry key="url" value-ref="driver"/>
-                <entry key="password" value="1234"/>
-            </map>
-        </property>
-    </bean>
-
-    <bean class="org.example.database.repository.CompanyRepository" id="companyRepository"/>
-
 </beans>
+        <!--    <bean class="org.example.database.pool.ConnectionPool"-->
+        <!--          id="pool1"-->
+        <!--          name="p1, p2, p3">-->
+
+
+        <!--        <constructor-arg value="${db.username}"/>-->
+        <!--        <constructor-arg value="${db.pool.size}"/>-->
+        <!--        <constructor-arg>-->
+        <!--            <list>-->
+        <!--                <value>&#45;&#45;arg1=value1</value>-->
+        <!--                <ref bean="driver"/>-->
+        <!--            </list>-->
+        <!--        </constructor-arg>-->
+        <!--        <constructor-arg>-->
+        <!--            <map>-->
+        <!--                <entry key="url" value-ref="driver"/>-->
+        <!--                <entry key="password" value="1234"/>-->
+        <!--            </map>-->
+        <!--        </constructor-arg>-->
+
+        <!--        <property name="properties">-->
+        <!--            <map>-->
+        <!--                <entry key="url" value-ref="driver"/>-->
+        <!--                <entry key="password" value="1234"/>-->
+        <!--            </map>-->
+        <!--        </property>-->
+        <!--    </bean>-->
