@@ -11,13 +11,8 @@ import java.util.Map;
 
 @Component("pool1")
 public class ConnectionPool {
-
     private final String userName;
-
     private final Integer poolSize;
-
-//    private List<Object> args;
-//    private Map<String, Object> properties;
 
 
     @Autowired
