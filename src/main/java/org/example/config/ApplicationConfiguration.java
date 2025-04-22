@@ -27,7 +27,7 @@ public class ApplicationConfiguration {
                 return new ConnectionPool("test-name",20);
         }
 
-        // Зависимость inject автоматически
+        //
         @Bean
         public CompanyRepository companyRepository2 (@Qualifier("pool2") ConnectionPool pool2){
                 return new CompanyRepository(pool2);
