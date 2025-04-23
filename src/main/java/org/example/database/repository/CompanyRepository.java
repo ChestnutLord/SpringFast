@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@Repository ("CR_From_class")
 @Transaction
 @Auditing
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
@@ -24,10 +24,9 @@ public class CompanyRepository implements CrudRepository<Integer, Company> {
 //    private final List<ConnectionPool> connectionPoolList;
 //    private final Integer poolSize;
 
-    public CompanyRepository(@Qualifier("pool2") ConnectionPool connectionPool
+    public CompanyRepository(@Qualifier("pool2") ConnectionPool connectionPool) {
 //                             List<ConnectionPool> connectionPoolList,
 ////                             @Value("${db.pool.size}") Integer poolSize
-    ) {
         this.connectionPool = connectionPool;
 //        this.connectionPoolList = connectionPoolList;
 //        this.poolSize = poolSize;

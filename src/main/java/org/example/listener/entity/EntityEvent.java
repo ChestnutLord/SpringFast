@@ -8,9 +8,9 @@ public class EntityEvent extends ApplicationEvent {
 
     private final AccessType accessType;
 
-    public EntityEvent(Object source,AccessType  accessType) {
+    public EntityEvent(Object source, AccessType accessType) {
         super(source);
-        this.accessType=accessType;
+        this.accessType = accessType;
     }
 
     public AccessType getAccessType() {
