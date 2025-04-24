@@ -20,7 +20,7 @@ public class ConnectionPool {
 
     @PostConstruct
     private void init() {
-        System.out.println("Initializing connection pool...");
+        System.out.println("@PostConstruct  --  Init-callback  --  Initializing connection pool "+userName);
     }
 
     @PreDestroy

@@ -11,7 +11,7 @@ public class VerifyPropertyBeanFactoryPostProcessor implements BeanFactoryPostPr
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        System.out.println();
+        System.out.println("Сообщение из BFPP -- VerifyPropertyBeanFactoryPostProcessor");
     }
 
     @Override

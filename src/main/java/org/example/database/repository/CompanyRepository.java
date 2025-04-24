@@ -34,7 +34,7 @@ public class CompanyRepository implements CrudRepository<Integer, Company> {
 
     @PostConstruct
     public void init() {
-        System.out.println("init company repository");
+        System.out.println("@PostConstruct  --  Init-callback  --  init company repository");
     }
 
     @Override
