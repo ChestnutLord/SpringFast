@@ -6,6 +6,8 @@ import java.time.Clock;
 
 public class EntityEvent extends ApplicationEvent {
 
+    // Ивент это набор полей
+
     private final AccessType accessType;
 
     public EntityEvent(Object source, AccessType accessType) {
