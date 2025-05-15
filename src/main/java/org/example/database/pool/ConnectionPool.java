@@ -2,21 +2,18 @@ package org.example.database.pool;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component("pool1")
+@RequiredArgsConstructor
 public class ConnectionPool {
+    @Value("${db.username}")
     private final String userName;
+    @Value("${db.pool.size}")
     private final Integer poolSize;
-
-
-    @Autowired //можем не ставить, автоматически будет вызван
-    public ConnectionPool(@Value("${db.username}") String userName, @Value("${db.pool.size}") Integer poolSize) {
-        this.userName = userName;
-        this.poolSize = poolSize;
-    }
 
     @PostConstruct
     private void init() {

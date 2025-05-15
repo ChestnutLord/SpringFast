@@ -1,6 +1,5 @@
 package org.example.bpp;
 
-import org.jspecify.annotations.Nullable;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
@@ -15,7 +14,7 @@ public class AuditingBeanPostProcessor implements BeanPostProcessor {
     final private Map<String, Class<?>> auditBeans = new HashMap<>();
 
     @Override
-    public @Nullable Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+    public  Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if (bean.getClass().isAnnotationPresent(Auditing.class)) {
             auditBeans.put(beanName, bean.getClass());
         }
@@ -23,7 +22,7 @@ public class AuditingBeanPostProcessor implements BeanPostProcessor {
     }
 
     @Override
-    public @Nullable Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+    public  Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         Class<?> beanClass = auditBeans.get(beanName);
         if (beanClass!=null) {
             return Proxy.newProxyInstance(beanClass.getClassLoader(), beanClass.getInterfaces(),

@@ -1,6 +1,5 @@
 package org.example.bpp;
 
-import org.jspecify.annotations.Nullable;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
@@ -16,7 +15,7 @@ public class InjectBeanPostProcessor implements BeanPostProcessor, ApplicationCo
     ApplicationContext applicationContext;
 
     @Override
-    public @Nullable Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         Arrays.stream(bean.getClass().getDeclaredFields())
                 .filter(field -> field.isAnnotationPresent(MyAnnotationInjectBean.class))
                 .forEach(field -> {

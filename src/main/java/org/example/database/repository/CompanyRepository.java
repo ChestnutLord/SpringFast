@@ -1,11 +1,11 @@
 package org.example.database.repository;
 
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import org.example.bpp.Auditing;
 import org.example.bpp.Transaction;
 import org.example.database.entity.Company;
 import org.example.database.pool.ConnectionPool;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -15,22 +15,18 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository ("CR_From_class")
+@Repository("CR_From_class")
 @Transaction
 @Auditing
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+@RequiredArgsConstructor
 public class CompanyRepository implements CrudRepository<Integer, Company> {
-    private final ConnectionPool connectionPool;
-//    private final List<ConnectionPool> connectionPoolList;
-//    private final Integer poolSize;
 
-    public CompanyRepository(@Qualifier("pool2") ConnectionPool connectionPool) {
-//                             List<ConnectionPool> connectionPoolList,
-////                             @Value("${db.pool.size}") Integer poolSize
-        this.connectionPool = connectionPool;
-//        this.connectionPoolList = connectionPoolList;
-//        this.poolSize = poolSize;
-    }
+    @Qualifier("pool2")
+    private final ConnectionPool connectionPool;
+//     private final List<ConnectionPool> pools;
+//    @Value("${db.pool.size}")
+//    private final Integer poolSize;
 
     @PostConstruct
     public void init() {
