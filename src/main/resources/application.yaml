@@ -1,0 +1,9 @@
+db:
+  username: postgres
+  password: admin
+  driver: PostgresDriver
+  url: postgres:5432
+  hosts: localhost,127.0.0.1
+  pool:
+    size: 12
+    timeout: 10
