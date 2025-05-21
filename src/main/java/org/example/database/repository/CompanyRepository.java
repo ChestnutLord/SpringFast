@@ -2,6 +2,7 @@ package org.example.database.repository;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.bpp.Auditing;
 import org.example.bpp.Transaction;
 import org.example.database.entity.Company;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Repository("CR_From_class")
 @Transaction
 @Auditing
@@ -30,17 +32,17 @@ public class CompanyRepository implements CrudRepository<Integer, Company> {
 
     @PostConstruct
     public void init() {
-        System.out.println("@PostConstruct  --  Init-callback  --  init company repository");
+        log.info("@PostConstruct  --  Init-callback  --  init company repository");
     }
 
     @Override
     public Optional<Company> findById(Integer id) {
-        System.out.println("findById method...");
+        log.info("findById method...");
         return Optional.of(new Company(id));
     }
 
     @Override
     public void delete(Company entity) {
-        System.out.println("delete method...");
+        log.info("delete method...");
     }
 }

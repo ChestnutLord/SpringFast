@@ -1,6 +1,7 @@
 package org.example.config;
 
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.example.config.condition.JpaCondition;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
+@Slf4j
 @Conditional(JpaCondition.class)
 @Configuration
 public class JpaConfiguration {
@@ -22,6 +24,6 @@ public class JpaConfiguration {
 
     @PostConstruct
     public void init() {
-        System.out.println("PostConstruct: JpaCondition загружен, т.к. условие в JpaCondition выполнено");
+        log.info("PostConstruct: JpaCondition загружен, т.к. условие в JpaCondition выполнено");
     }
 }
