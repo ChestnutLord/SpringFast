@@ -9,6 +9,7 @@ import org.example.listener.entity.EntityEvent;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -28,6 +29,7 @@ public class CompanyService {
 //        this.applicationEventPublisher = applicationEventPublisher;
 //    }
 
+    @Transactional
     public Optional<CompanyReadDto> findById(Integer id) {
         return CR_From_class.findById(id)
                 .map(entity -> {
