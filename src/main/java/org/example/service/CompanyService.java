@@ -1,12 +1,10 @@
 package org.example.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.database.entity.Company;
-import org.example.database.repository.CrudRepository;
+import org.example.database.repository.CompanyRepository;
 import org.example.dto.CompanyReadDto;
 import org.example.listener.entity.AccessType;
 import org.example.listener.entity.EntityEvent;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,9 +13,10 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class CompanyService {
 
-    private final CrudRepository<Integer, Company> CR_From_class;
+    private final CompanyRepository CR_From_class;
     private final UserService userService;
     private final ApplicationEventPublisher applicationEventPublisher;
 
