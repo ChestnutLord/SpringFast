@@ -14,10 +14,7 @@ public record DatabaseProperties(String username,
                                  List<PoolProperties> pools,
                                  Map<String, Object> properties) {
 
-
     public static record PoolProperties(Integer size,
                                         Integer timeout) {
-
     }
-
 }

@@ -13,26 +13,17 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class CompanyService {
 
-    private final CompanyRepository CR_From_class;
+    private final CompanyRepository companyRepository;
     private final UserService userService;
-    private final ApplicationEventPublisher applicationEventPublisher;
-
-//    public CompanyService(@Qualifier("CR_From_class") CrudRepository<Integer, Company> CR_From_class,
-//                          UserService userService,
-//                          ApplicationEventPublisher applicationEventPublisher) {
-//        this.CR_From_class = CR_From_class;
-//        this.userService = userService;
-//        this.applicationEventPublisher = applicationEventPublisher;
-//    }
+    private final ApplicationEventPublisher eventPublisher;
 
     @Transactional
     public Optional<CompanyReadDto> findById(Integer id) {
-        return CR_From_class.findById(id)
+        return companyRepository.findById(id)
                 .map(entity -> {
-                    applicationEventPublisher.publishEvent(new EntityEvent(entity, AccessType.READ));
+                    eventPublisher.publishEvent(new EntityEvent(entity, AccessType.READ));
                     return new CompanyReadDto(entity.getId());
                 });
     }

@@ -5,7 +5,7 @@ import org.springframework.data.repository.Repository;
 
 import java.util.Optional;
 
-public interface CompanyRepository extends Repository<Integer, Company> {
+public interface CompanyRepository extends Repository<Company, Integer> {
 
      Optional<Company> findById(Integer id);
 

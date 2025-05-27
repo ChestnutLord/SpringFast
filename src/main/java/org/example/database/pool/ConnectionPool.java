@@ -12,18 +12,19 @@ import org.springframework.stereotype.Component;
 @Component("pool1")
 @RequiredArgsConstructor
 public class ConnectionPool {
+
     @Value("${db.username}")
-    private final String userName;
+    private final String username;
     @Value("${db.pool.size}")
     private final Integer poolSize;
 
     @PostConstruct
     private void init() {
-        log.info("@PostConstruct  --  Init-callback  --  Initializing connection pool "+userName);
+        log.info("Init connection pool");
     }
 
     @PreDestroy
     private void destroy() {
-        log.info("Destroying connection pool...");
+        log.info("Clean connection pool");
     }
 }

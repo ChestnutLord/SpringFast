@@ -1,17 +1,16 @@
 package org.example.listener.entity;
 
 import lombok.Getter;
-import org.springframework.context.ApplicationEvent;
 
-import java.time.Clock;
+import java.util.EventObject;
 
-public class EntityEvent extends ApplicationEvent {
-    // Ивент это набор полей
+public class EntityEvent extends EventObject {
+
     @Getter
     private final AccessType accessType;
 
-    public EntityEvent(Object source, AccessType accessType) {
-        super(source);
+    public EntityEvent(Object entity, AccessType accessType) {
+        super(entity);
         this.accessType = accessType;
     }
 }

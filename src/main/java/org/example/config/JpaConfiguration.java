@@ -16,14 +16,13 @@ import org.springframework.context.annotation.Configuration;
 public class JpaConfiguration {
 
 //    @Bean
-//    // название метода будет id бина
 //    @ConfigurationProperties(prefix = "db")
 //    public DatabaseProperties databaseProperties() {
 //        return new DatabaseProperties();
 //    }
 
     @PostConstruct
-    public void init() {
+    void init() {
         log.info("PostConstruct: JpaCondition загружен, т.к. условие в JpaCondition выполнено");
     }
 }
