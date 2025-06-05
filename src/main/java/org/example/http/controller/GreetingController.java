@@ -1,7 +1,5 @@
 package org.example.http.controller;
 
-
-
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import org.example.dto.UserReadDto;
@@ -9,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-
 @Controller
+@RequestMapping("/api/v1")
 public class GreetingController {
 
     @GetMapping("/hello")
@@ -26,4 +24,9 @@ public class GreetingController {
         return modelAndView;
     }
 
+    @GetMapping("/ilikeit")
+    public ModelAndView someNewModelAndView(ModelAndView modelAndView){
+        modelAndView.setViewName("greeting/ilikeit");
+        return modelAndView;
+    }
 }
