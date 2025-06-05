@@ -23,17 +23,23 @@ logging:
   level:
     root: INFO
 
-
 spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
   datasource:
     url: jdbc:postgresql://localhost:5433/postgres
     username: postgres
     password: pass
     driver-class-name: org.postgresql.Driver
   jpa:
+    open-in-view: false
     properties:
       hibernate:
         show_sql: true
         format_sql: true
         hbm2ddl.auto: validate
+
+
 
