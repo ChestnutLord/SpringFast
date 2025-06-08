@@ -20,11 +20,11 @@ public class ConnectionPool {
 
     @PostConstruct
     private void init() {
-        log.info("Init connection pool");
+        log.info("--- PostConstruct: Init connection pool ---");
     }
 
     @PreDestroy
     private void destroy() {
-        log.info("Clean connection pool");
+        log.info("--- @PreDestroy: Clean connection pool ---");
     }
 }
