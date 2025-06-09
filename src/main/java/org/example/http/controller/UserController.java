@@ -3,9 +3,12 @@ package org.example.http.controller;
 import lombok.AllArgsConstructor;
 import org.example.dto.UserCreateEditDto;
 import org.example.service.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @Controller
 @RequestMapping("/users")
@@ -16,20 +19,24 @@ public class UserController {
 
     @GetMapping
     public String findAll(Model model) {
-        //model.addAttribute("users", userService.findAll());
+        model.addAttribute("users", userService.findAll());
         return "user/users";
     }
 
     @GetMapping("/{id}")
-    public String findByid(@PathVariable("id") Long id, Model model) {
-        //model.addAttribute("user", userService.findById(id));
-        return "user/user";
+    public String findById(@PathVariable("id") Long id, Model model) {
+        return userService.findById(id)
+                .map(userReadDto -> {
+                    model.addAttribute("user", userReadDto);
+                    return "user/user";
+                })
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public String create(@ModelAttribute UserCreateEditDto userCreateEditDto) {
-        //userService.cretae(userCreateEditDto);
-        return "redirect:/users/" + 25;
+        return "redirect:/users/" + userService.create(userCreateEditDto).getId();
     }
 
     //@PostMapping("/{id}")
@@ -39,8 +46,8 @@ public class UserController {
         return ("redirect:/users/{id}");
     }
 
-//    @DeleteMapping("/{id}")
-@PostMapping("/{id}/delete")
+    //    @DeleteMapping("/{id}")
+    @PostMapping("/{id}/delete")
     public String delete(@PathVariable("id") Long id) {
 //        userService.delete(id);
         return "redirect:/users";

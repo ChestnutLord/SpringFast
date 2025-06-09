@@ -26,7 +26,7 @@ public class GreetingController {
                               HttpServletRequest request,
                               @ModelAttribute UserReadDto userReadDto) {
         modelAndView.setViewName("greeting/hello");
-        modelAndView.addObject("user", new UserReadDto(1L, "Ivan"));
+        // modelAndView.addObject("user", new UserReadDto(1L, "Ivan"));
 
         return modelAndView;
     }
